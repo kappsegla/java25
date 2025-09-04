@@ -22,7 +22,7 @@ public class FizzBuzz {
             System.out.println("Fizz");
         } else if (buzz) {
             System.out.println("Buzz");
-        } else {
+        }else {
             System.out.println(number);
         }
     }
