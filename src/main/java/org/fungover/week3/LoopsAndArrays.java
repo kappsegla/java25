@@ -27,6 +27,26 @@ public class LoopsAndArrays {
         //Mean value of the numbers
         double result = average(values);
         System.out.println("Average value: " + result);
+
+        //The biggest number we can make by adding two values from the array
+        int biggestValue = 0;
+        int number1 = 0;
+        int number2 = 0;
+
+        for (int i = 0; i < values.length-1; i++) {
+            for (int j = i+1; j < values.length; j++) {
+                int sum = values[i] +  values[j];
+                if( sum > biggestValue ) {
+                    biggestValue = sum;
+                    number1 = values[i];
+                    number2 = values[j];
+                }
+            }
+        }
+
+        System.out.println("The biggest sum of 2 values: " + biggestValue);
+        System.out.println("By adding " + number1 + " and " + number2);
+
         
         System.out.println(Arrays.toString(values));
     }
