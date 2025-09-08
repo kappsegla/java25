@@ -1,18 +1,22 @@
 package org.fungover.week3;
 
+import java.util.Arrays;
+
 public class LoopsAndArrays {
 
     public static void main(String[] args) {
+        //Ask the user for values
+        //Print the values
+        int numberCount = Integer.parseInt(System.console().readLine("How many numbers do you have "));
+        int[] values = new int[numberCount];
 
-//        System.out.println("1 1 1 1 1");
-//        System.out.println("2 2 2 2 2");
-//        System.out.println("3 3 3 3 3");
-//        System.out.println("4 4 4 4 4");
-        int max = Integer.parseInt(System.console().readLine("Enter a max value"));
-        for (int i = 1; i <= max; i++) {
-            //Do something
-            System.out.println(i + " " + i + " " + i + " " + i);
+        for (int i = 0; i < 10; i++) {
+            int value = Integer.parseInt(System.console().readLine("Enter a value "));
+            values[i] = value;
         }
+
+        System.out.println(Arrays.toString(values));
+        //System.out.println("The values are " + value1 + ", " + value2 + ", " + value3);
 
 
     }
