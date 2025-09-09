@@ -9,7 +9,7 @@ public class StringArray {
 //        text[0] = "Some";
 //        text[1] = "text";
 //        text[2] = "here";
-        String[] text = {"Some","text","here"};
+        String[] text = {"Some", "text", "here"};
 
         if (text[0] != null)
             System.out.println(text[0].charAt(0));
