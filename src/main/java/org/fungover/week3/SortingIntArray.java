@@ -12,9 +12,20 @@ public class SortingIntArray {
 //        numbers[0] = numbers[2];
 //        numbers[2] = temp;
 
-        Arrays.sort(numbers);
+        //Arrays.sort(numbers);
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] > numbers[j]) {
+                    int temp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                }
+            }
+        }
         System.out.println(Arrays.toString(numbers));
-        String[] strings = {"One", "Abba", "Ac", "aa", "AA", "Aa", "Å", "Ä", "Ö"};
+
+
+        String[] strings = {"One", "Abba", "Ac", "aa", "AA", "Aa", "Å", "Ä", "Ö", "á", "ã"};
 
         Collator swedishCollator = Collator.getInstance(Locale.of("sv", "SE"));
         //Sort ignoring case
