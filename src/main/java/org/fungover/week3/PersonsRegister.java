@@ -23,7 +23,6 @@ public class PersonsRegister {
         //what should be compared, in this case the age() on each person.
         Arrays.sort(persons, Comparator.comparingInt(Person::age));
         System.out.println(Arrays.toString(persons));
-
     }
 }
 
