@@ -25,7 +25,7 @@ public class SortingIntArray {
         System.out.println(Arrays.toString(numbers));
 
 
-        String[] strings = {"One", "Abba", "Ac", "aa", "AA", "Aa", "Å", "Ä", "Ö", "á", "ã"};
+        String[] strings = {"One", "Abba", "19", "2", "Ac", "aa", "AA", "Aa", "Å", "Ä", "Ö", "á", "ã"};
 
         Collator swedishCollator = Collator.getInstance(Locale.of("sv", "SE"));
         //Sort ignoring case
