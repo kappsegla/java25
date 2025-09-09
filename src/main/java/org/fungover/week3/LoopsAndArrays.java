@@ -15,6 +15,7 @@ public class LoopsAndArrays {
 
         int numberCount = Integer.parseInt(System.console().readLine("How many numbers do you have "));
         int[] values = new int[numberCount];
+        System.out.println(Arrays.toString(values));
 
         for (int i = 0; i < numberCount; i++) {
             int value = Integer.parseInt(System.console().readLine("Enter a value "));
