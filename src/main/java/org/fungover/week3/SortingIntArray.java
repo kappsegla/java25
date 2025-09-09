@@ -1,0 +1,33 @@
+package org.fungover.week3;
+
+import java.text.Collator;
+import java.util.Arrays;
+import java.util.Locale;
+
+public class SortingIntArray {
+    public static void main(String[] args) {
+        int[] numbers = {5, 7, 1, 3, 2, 6, 4};
+
+//        int temp = numbers[0];
+//        numbers[0] = numbers[2];
+//        numbers[2] = temp;
+
+        Arrays.sort(numbers);
+        System.out.println(Arrays.toString(numbers));
+        String[] strings = {"One", "Abba", "Ac", "aa", "AA", "Aa", "Å", "Ä", "Ö"};
+
+        Collator swedishCollator = Collator.getInstance(Locale.of("sv", "SE"));
+        //Sort ignoring case
+        Arrays.sort(strings, String.CASE_INSENSITIVE_ORDER);
+        //Sort with swedish knowledge so åäö comes in the right order
+        Arrays.sort(strings, swedishCollator);
+        System.out.println(Arrays.toString(strings));
+
+        //Convert to list and sort
+        var list = Arrays.asList(strings);
+        list.sort(swedishCollator);
+        System.out.println(list);
+
+
+    }
+}
