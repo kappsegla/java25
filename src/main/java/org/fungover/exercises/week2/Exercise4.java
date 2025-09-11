@@ -30,7 +30,20 @@ public class Exercise4 {
                 break;
             }
         }
-        System.out.println(" your words: " + result.toString());
 
+        //Another solution
+
+        String tal = System.console().readLine(" Enter a number: ");
+        int input = Integer.parseInt(tal);
+        while (input > 2) {
+            if (input % 2 == 0) {
+                input = input / 2;
+                System.out.print(input + " ");
+            } else {
+                input = input * 3 + 1;
+                System.out.print(input + " ");
+
+            }
+        }
     }
 }
