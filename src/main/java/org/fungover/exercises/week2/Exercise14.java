@@ -19,9 +19,7 @@ public class Exercise14 {
         var charArrayForWord2 = word2.toCharArray();
         Arrays.sort(charArrayForWord1);
         Arrays.sort(charArrayForWord2);
-        if (Arrays.compare(charArrayForWord1, charArrayForWord2) == 0)
+        if (Arrays.equals(charArrayForWord1, charArrayForWord2))
             System.out.println("The words " + word1 + " and " + word2 + " are anagrams");
-
-
     }
 }
