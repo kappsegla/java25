@@ -1,6 +1,6 @@
 package org.fungover.exercises.week2;
 
-public class Ëxercise5 {
+public class Exercise5 {
     public static void main(String[] args) {
         int i = 0;
         try {
