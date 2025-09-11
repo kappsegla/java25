@@ -5,9 +5,10 @@ import static java.lang.System.console;
 public class Exercise13 {
     public static void main(String[] args) {
         //Skapa string med texten radar
-        String palindrom = console().readLine("Enter a word: ");
+        String word = console().readLine("Enter a word: ");
         //Ta bort alla mellanslag...
-        palindrom = palindrom
+        String palindrom = word
+                .trim()
                 .toLowerCase()
                 .replace(" ", "");
 
@@ -20,7 +21,7 @@ public class Exercise13 {
         else
             System.out.println("Not a palindrom");
 
-        System.out.println("Is palindrom: " + isPalindrome(palindrom));
+        System.out.println("Is palindrom: " + isPalindrome(word));
     }
 
     /**
@@ -30,9 +31,24 @@ public class Exercise13 {
      * @return true if word is palindrome otherwise false
      */
     private static boolean isPalindrome(String word) {
-        for (int i = 0; i < word.length() / 2; i++)
-            if (word.charAt(i) != word.charAt(word.length() - 1 - i))
+        int startIndex = 0;
+        int endIndex = word.length() - 1;
+
+        while (startIndex < endIndex) {
+
+            if (word.charAt(startIndex) == ' ') {
+                startIndex++;
+                continue;
+            }
+            if (word.charAt(endIndex) == ' ') {
+                endIndex--;
+                continue;
+            }
+            if (word.charAt(startIndex) != word.charAt(endIndex))
                 return false;
+            startIndex++;
+            endIndex--;
+        }
         return true;
     }
 }
