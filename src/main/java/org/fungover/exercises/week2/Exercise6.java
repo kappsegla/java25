@@ -5,8 +5,11 @@ import java.util.Scanner;
 
 public class Exercise6 {
     public static void main(String[] args) {
+
         Random rand = new Random();
         int secret = rand.nextInt(100) + 1;
+        //secret = rand.nextInt(1,101);
+        //int secret = (int)(Math.random() * 100 + 1);
         int number = 0;
 
         while (number != secret) {
