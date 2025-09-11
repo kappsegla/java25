@@ -20,6 +20,4 @@ public class Methods {
     public static int add(int number){
         return number + number;
     }
-
-
 }
