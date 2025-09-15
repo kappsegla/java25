@@ -4,7 +4,7 @@ public class LoopExercise1 {
     public static void main(String[] args) {
 
         final boolean PRINT_DEBUG_INFO = false;
-        if( PRINT_DEBUG_INFO )
+        if (PRINT_DEBUG_INFO)
             System.out.println("Can this be printed?");
 
         System.out.println("Wait a second or two...");
