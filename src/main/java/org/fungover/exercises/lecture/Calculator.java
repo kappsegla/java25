@@ -9,6 +9,7 @@ public class Calculator {
         System.out.println("Enter two numbers: ");
         double num1 = scanner.nextDouble();
         double num2 = scanner.nextDouble();
+        //Alt use console for input
         //double num3 = Double.parseDouble(System.console().readLine());
 
         System.out.println("Choose an operator, +-*/%");
