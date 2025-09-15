@@ -1,0 +1,22 @@
+Övningsuppgifter under dagen.
+1. Skriv ut följande text på console fönstret:
+*
+**
+***
+****
+*****
+
+2. Miniräknare: Fråga användaren efter två tal
+och en operator +-*/
+Skriv ut resultatet
+
+3. Tänk på ett tal och låt datorn gissa talet :D
+Datorn frågar om vi tänker på ett tal mellan 1-100 och
+vi svarar större, mindre eller lika. (> < =)
+
+Hur kan vi göra detta på ett smart och effektivt sätt?
+
+
+
+
+
