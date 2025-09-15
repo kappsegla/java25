@@ -30,23 +30,22 @@ public class GuessMyThoughts {
     }
 
     //Optimal solution dividing remaining numbers in 2
-    static void test() {
+    static int test(int think) {
         int lowNumber = 0;
-        int highNumber = 100;
-        int randomNumber = (int) (Math.random() * highNumber) + 1;
+        int highNumber = 101;
         int gissning = (highNumber - lowNumber) / 2;
         int antalGissningar = 1;
 
-        System.out.println("Random nummer: " + randomNumber);
+        System.out.println("Secret number: " + think);
         System.out.println("Första gissning: " + gissning);
 
         while (true) {
-            if (gissning > randomNumber) {
+            if (gissning > think) {
                 antalGissningar++;
                 highNumber = gissning;
                 gissning = gissning - ((highNumber - lowNumber) / 2);
                 System.out.println("Gissning: " + gissning);
-            } else if (gissning < randomNumber) {
+            } else if (gissning < think) {
                 antalGissningar++;
                 lowNumber = gissning;
                 gissning = gissning + ((highNumber - lowNumber) / 2);
@@ -56,6 +55,7 @@ public class GuessMyThoughts {
                 break;
             }
         }
+        return gissning;
     }
 }
 
