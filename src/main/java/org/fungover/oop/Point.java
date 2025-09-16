@@ -6,17 +6,22 @@ public class Point {
     private double x;
     private double y;
 
+    public static int pointCount = 0;
+
     public Point(double x, double y) {
+        pointCount++;
         this.x = x;
         this.y = y;
     }
 
     public Point(Point other) {
+        pointCount++;
         this.x = other.x;
         this.y = other.y;
     }
 
     public Point() {
+        pointCount++;
         this.x = 0.0;
         this.y = 0.0;
     }
@@ -40,6 +45,12 @@ public class Point {
     public double distanceTo(Point other) {
         double a = this.y - other.y;
         double b = this.x - other.x;
+        return Math.sqrt(a * a + b * b);
+    }
+
+    public static double distanceBetween(Point point1, Point point2) {
+        double a = point1.y - point2.y;
+        double b = point1.x - point2.x;
         return Math.sqrt(a * a + b * b);
     }
 
