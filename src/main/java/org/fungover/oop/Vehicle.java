@@ -14,6 +14,14 @@ public class Vehicle {
         this.kmPerLiter = kmPerLiter;
     }
 
+    public Vehicle(Vehicle vehicle) {
+        //Since this is code in the Vehicle class
+        //We can access private fields directly
+        this.passengerCount = vehicle.passengerCount;
+        this.fuelCapacity = vehicle.fuelCapacity;
+        this.kmPerLiter = vehicle.kmPerLiter;
+    }
+
     public int getPassengerCount() {
         return passengerCount;
     }
