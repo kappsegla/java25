@@ -8,9 +8,5 @@ public class MapMarkers {
         Point point1 = new Point(3.0, 4.0);
 
         System.out.println(point.distanceTo(point1));
-
-
     }
-
-
 }
