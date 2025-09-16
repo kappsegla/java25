@@ -37,6 +37,12 @@ public class Point {
         this.y = y;
     }
 
+    public double distanceTo(Point other) {
+        double a = this.y - other.y;
+        double b = this.x - other.x;
+        return Math.sqrt(a * a + b * b);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Point point)) return false;
