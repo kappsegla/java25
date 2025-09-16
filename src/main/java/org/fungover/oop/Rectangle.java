@@ -1,23 +1,40 @@
 package org.fungover.oop;
 
-public class Rectangle {
+import java.util.Objects;
+
+public class Rectangle extends Object {
     private int width;
     private int height;
 
-    public Rectangle() {
-        this.width = 10;
-    }
-
     public Rectangle(int width, int height) {
-        if (width <= 0 || height <= 0)
-            throw new IllegalArgumentException("Values can't be 0 or less");
-        if (width == height)
-            throw new IllegalArgumentException("Width and height can't be same");
         this.width = width;
         this.height = height;
     }
 
     public int getWidth() {
         return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "width=" + width +
+                ", height=" + height +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Rectangle rectangle)) return false;
+        return width == rectangle.width && height == rectangle.height;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(width, height);
     }
 }
