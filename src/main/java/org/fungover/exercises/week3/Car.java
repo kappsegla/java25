@@ -5,6 +5,14 @@ public class Car {
     private int price;
     private String color;
 
+    public Car() {
+    }
+
+    public Car(String model, int price, String color) {
+        this.model = model;
+        this.price = price;
+        this.color = color;
+    }
 
     public String getModel() {
         return this.model;
