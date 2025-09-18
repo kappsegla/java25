@@ -43,4 +43,15 @@ public class Car {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public void halfPrice() {
+        price = price / 2;
+    }
+
+
+    static void main() {
+        Car car = new Car("BMW", 750000);
+        car.halfPrice();
+        System.out.println(car.getPrice());
+    }
 }
