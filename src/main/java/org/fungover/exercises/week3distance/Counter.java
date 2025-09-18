@@ -15,6 +15,11 @@ public class Counter {
         return value;
     }
 
+    public void print() {
+        System.out.println("Counter value: " + value +
+                " Number of counters created: " + createdCounters);
+    }
+
     static void main() {
         Counter counter = new Counter();
 
@@ -26,6 +31,8 @@ public class Counter {
         Counter count = new Counter();
         useCounter(count);
         System.out.println(count.value());
+
+        counter.print();
 
     }
 
