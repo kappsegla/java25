@@ -2,6 +2,17 @@ package org.fungover.exercises.week3distance;
 
 public class Counter {
     private int value;
+    private static int createdCounters;
+
+    //Static Constructor
+    static {
+        createdCounters = 0;
+    }
+
+    public Counter() {
+        value = 0;
+        createdCounters++;
+    }
 
     public void increase() {
         value++;
