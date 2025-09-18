@@ -1,8 +1,8 @@
 package org.fungover.exercises.week3;
 
 public class PancakeRecipe {
-    public static final double FLOUR = 2.5;
-    public static final double MILK = 6;
+    public static final double FLOUR_FOR_ONE_BATCH = 2.5;
+    public static final double MILK = 6.5;
     public static final int EGG = 3;
     public static final double SALT = 0.5;
     public static final double BUTTER = 1;
@@ -22,24 +22,24 @@ public class PancakeRecipe {
     }
 
     public boolean canMakePancakes() {
-        return FLOUR <= flour && MILK <= milk && EGG <= egg && SALT <= salt && BUTTER <= butter;
+        return FLOUR_FOR_ONE_BATCH <= flour && MILK <= milk && EGG <= egg && SALT <= salt && BUTTER <= butter;
     }
 
     public void makePancakes() {
-        while (canMakePancakes()) {
-            this.flour -= FLOUR;
+        if (canMakePancakes()) {
+            this.flour -= FLOUR_FOR_ONE_BATCH;
             this.milk -= MILK;
             this.egg -= EGG;
             this.salt -= SALT;
             this.butter -= BUTTER;
             System.out.println("Making pancake!");
-        }
-        System.out.println("No more Ingredients. :c");
+            makePancakes();
+        } else
+            System.out.println("No more Ingredients. :c");
     }
 
-
     static void main() {
-        var pancake = new PancakeRecipe(20, 15, 10, 10, 3);
+        var pancake = new PancakeRecipe(20, 6, 10, 10, 3);
         System.out.println(pancake.canMakePancakes());
         pancake.makePancakes();
     }

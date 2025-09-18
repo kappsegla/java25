@@ -8,13 +8,13 @@ public class Semaphore {
         //method release
         public void release() {
             pool.add(this);
-            Semaphore.numberOfObjects--;
+            Semaphore.numberOfInstances--;
         }
     }
 
     //Max antal objekt
     private static final int MAX_INSTANCES = 3;
-    private static int numberOfObjects;
+    private static int numberOfInstances;
 
     //Object pool
     private static List<Resource> pool = new ArrayList<>();
@@ -28,8 +28,8 @@ public class Semaphore {
     }
 
     public static Semaphore.Resource request() {
-        if (numberOfObjects < MAX_INSTANCES) {
-            numberOfObjects++;
+        if (numberOfInstances < MAX_INSTANCES) {
+            numberOfInstances++;
             return pool.removeLast();
         } else
             return null;
