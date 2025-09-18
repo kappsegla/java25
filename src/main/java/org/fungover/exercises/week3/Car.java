@@ -14,6 +14,12 @@ public class Car {
         this.color = color;
     }
 
+    public Car(String model, int price) {
+        this.color = "white";
+        this.price = price;
+        this.model = model;
+    }
+
     public String getModel() {
         return this.model;
     }
