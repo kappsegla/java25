@@ -7,8 +7,8 @@ public class ScoreBoard {
     private Counter player2;
 
     public ScoreBoard() {
-        player1 = new Counter();
-        player2 = new Counter();
+        this.player1 = new Counter();
+        this.player2 = new Counter();
     }
 
     public void increasePlayer1Score() {
