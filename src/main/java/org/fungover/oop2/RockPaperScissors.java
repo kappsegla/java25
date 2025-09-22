@@ -12,33 +12,33 @@ public class RockPaperScissors {
         while (scoreBoard.player1Score() < MAX_SCORE &&
                 scoreBoard.player2Score() < MAX_SCORE) {
             //Input av human choice
-            int playerChoice;
+            Choice playerChoice;
             try {
                 playerChoice = getPlayerChoice();
             } catch (IllegalArgumentException e) {
                 continue;
             }
             //Datorns val
-            int computerChoice = getComputerChoice();
+            Choice computerChoice = getComputerChoice();
             //Kolla vinnare
             checkWinner(computerChoice, playerChoice);
         }
     }
 
-    private static void checkWinner(int computerChoice, int playerChoice) {
+    private static void checkWinner(Choice computerChoice, Choice playerChoice) {
         printChoices(computerChoice, playerChoice);
         if (computerChoice == playerChoice) {
             //Draw
             printWinner(" It's a draw.");
-        } else if (computerChoice == ROCK && playerChoice == SCISSORS) {
+        } else if (computerChoice == Choice.ROCK && playerChoice == Choice.SCISSORS) {
             //Computer wins
             scoreBoard.increasePlayer2Score();
             printWinner(" Computer wins.");
-        } else if (computerChoice == PAPER && playerChoice == ROCK) {
+        } else if (computerChoice == Choice.PAPER && playerChoice == Choice.ROCK) {
             //Computer wins
             scoreBoard.increasePlayer2Score();
             printWinner(" Computer wins.");
-        } else if (computerChoice == SCISSORS && playerChoice == PAPER) {
+        } else if (computerChoice == Choice.SCISSORS && playerChoice == Choice.PAPER) {
             //Computer wins
             scoreBoard.increasePlayer2Score();
             printWinner(" Computer wins.");
@@ -49,7 +49,7 @@ public class RockPaperScissors {
         }
     }
 
-    private static void printChoices(int computerChoice, int playerChoice) {
+    private static void printChoices(Choice computerChoice, Choice playerChoice) {
         System.out.print("Computer picks " + computerChoice + ", Player picks " + playerChoice);
     }
 
@@ -59,25 +59,25 @@ public class RockPaperScissors {
 
     }
 
-    private static int getComputerChoice() {
-        int computerChoice;
+    private static Choice getComputerChoice() {
+        Choice computerChoice;
         double rand = Math.random();
         if (rand < 0.33) {
-            computerChoice = ROCK;
+            computerChoice = Choice.ROCK;
         } else if (rand < 0.66) {
-            computerChoice = PAPER;
+            computerChoice = Choice.PAPER;
         } else
-            computerChoice = SCISSORS;
+            computerChoice = Choice.SCISSORS;
         return computerChoice;
     }
 
-    private static int getPlayerChoice() {
+    private static Choice getPlayerChoice() {
         String input = IO.readln("Your choice (r)ock,(p)aper,(s)cissors: ");
-        int playerChoice =
+        Choice playerChoice =
                 switch (input.trim().toLowerCase()) {
-                    case "rock", "r" -> ROCK;
-                    case "paper", "p" -> PAPER;
-                    case "scissors", "s" -> SCISSORS;
+                    case "rock", "r" -> Choice.ROCK;
+                    case "paper", "p" -> Choice.PAPER;
+                    case "scissors", "s" -> Choice.SCISSORS;
                     default -> throw new IllegalArgumentException();
                 };
         return playerChoice;
