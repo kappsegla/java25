@@ -25,6 +25,12 @@ public class IntArray {
         size++;
     }
 
+    public int getValue(int index) {
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Index " + index + " is invalid for size " + size);
+        return elements[index];
+    }
+
 
     private void checkAndIncreaseSizeWhenNeeded() {
         if (size == elements.length) {
@@ -49,6 +55,8 @@ public class IntArray {
         array.add(10);
         array.add(11);
         array.addFirst(12);
+        System.out.println(array.getValue(0));
+        System.out.println(array.getValue(5));
 
 
     }
