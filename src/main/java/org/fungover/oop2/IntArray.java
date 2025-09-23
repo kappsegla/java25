@@ -19,12 +19,7 @@ public class IntArray {
     }
 
     public void addFirst(int value) {
-        checkAndIncreaseSizeWhenNeeded();
-        for (int i = size; i > 0; i--) {
-            elements[i] = elements[i - 1];
-        }
-        elements[0] = value;
-        size++;
+        insert(0, value);
     }
 
     public int getValue(int index) {
@@ -42,7 +37,12 @@ public class IntArray {
     }
 
     public void insert(int index, int value) {
-
+        checkAndIncreaseSizeWhenNeeded();
+        for (int i = size; i > index; i--) {
+            elements[i] = elements[i - 1];
+        }
+        elements[index] = value;
+        size++;
     }
 
     public void remove(int index) {
@@ -76,7 +76,7 @@ public class IntArray {
         array.insert(2, 20);
         System.out.println("The array after insert: " + array.toString());
         array.remove(1);
-        System.out.println("The array after renive: " + array.toString());
+        System.out.println("The array after remove: " + array.toString());
 
     }
 
