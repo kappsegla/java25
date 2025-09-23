@@ -31,6 +31,14 @@ public class IntArray {
         return elements[index];
     }
 
+    public int indexOf(int value) {
+        for (int i = 0; i < size; i++) {
+            if (getValue(i) == value)
+                return i;
+        }
+        return -1;
+    }
+
 
     private void checkAndIncreaseSizeWhenNeeded() {
         if (size == elements.length) {
