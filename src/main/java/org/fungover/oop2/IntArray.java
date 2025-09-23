@@ -1,6 +1,8 @@
 package org.fungover.oop2;
 
 
+import java.util.Arrays;
+
 public class IntArray {
     private int[] elements = new int[10];
     private int size;
@@ -39,6 +41,19 @@ public class IntArray {
         return -1;
     }
 
+    public void insert(int index, int value) {
+
+    }
+
+    public void remove(int index) {
+
+
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(Arrays.copyOf(elements, size));
+    }
 
     private void checkAndIncreaseSizeWhenNeeded() {
         if (size == elements.length) {
@@ -56,16 +71,12 @@ public class IntArray {
         array.add(3);
         array.add(4);
         array.add(5);
-        array.add(6);
-        array.add(7);
-        array.add(8);
-        array.add(9);
-        array.add(10);
-        array.add(11);
         array.addFirst(12);
-        System.out.println(array.getValue(0));
-        System.out.println(array.getValue(5));
-
+        System.out.println("The array after add: " + array.toString());
+        array.insert(2, 20);
+        System.out.println("The array after insert: " + array.toString());
+        array.remove(1);
+        System.out.println("The array after renive: " + array.toString());
 
     }
 
