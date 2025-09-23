@@ -46,7 +46,9 @@ public class IntArray {
     }
 
     public void replace(int index, int value) {
-
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Index " + index + " is invalid for size " + size);
+        elements[index] = value;
     }
 
     public void remove(int index) {
