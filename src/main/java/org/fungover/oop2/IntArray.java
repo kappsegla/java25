@@ -12,15 +12,27 @@ public class IntArray {
      */
     //Alt names: append, addLast, insertLast, putLast
     public void add(int value) {
+        checkAndIncreaseSizeWhenNeeded();
+        elements[size++] = value;
+    }
+
+    public void addFirst(int value) {
+        checkAndIncreaseSizeWhenNeeded();
+        for (int i = size; i > 0; i--) {
+            elements[i] = elements[i - 1];
+        }
+        elements[0] = value;
+        size++;
+    }
+
+
+    private void checkAndIncreaseSizeWhenNeeded() {
         if (size == elements.length) {
             int[] temp = new int[size + 1];
             //Copy from elements to temp
-            for (int i = 0; i < size; i++) {
-                temp[i] = elements[i];
-            }
+            System.arraycopy(elements, 0, temp, 0, size);
             elements = temp;
         }
-        elements[size++] = value;
     }
 
     static void main() {
@@ -36,6 +48,7 @@ public class IntArray {
         array.add(9);
         array.add(10);
         array.add(11);
+        array.addFirst(12);
 
 
     }
