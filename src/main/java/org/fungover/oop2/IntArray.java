@@ -58,6 +58,25 @@ public class IntArray {
         size--;
     }
 
+    /**
+     * Start index must be less than end index.
+     * If start index == end index an empty array is returned
+     *
+     * @param startIndex Start index >=0 inclusive
+     * @param endIndex   End index exclusive
+     * @return
+     */
+    public int[] subArray(int startIndex, int endIndex) {
+        if (startIndex < 0 || endIndex < 0 ||
+                startIndex > size - 1 || endIndex > size
+                || startIndex > endIndex) {
+            throw new IllegalArgumentException("Invalid start or end index");
+        }
+        if (startIndex == endIndex)
+            return new int[0];
+        return Arrays.copyOfRange(elements, startIndex, endIndex);
+    }
+
     @Override
     public String toString() {
         return Arrays.toString(Arrays.copyOf(elements, size));
@@ -85,6 +104,8 @@ public class IntArray {
         array.add(4);
         array.add(5);
         array.remove(9);
+        var result = array.subArray(5, 7);
+        System.out.println("The array after subArray: " + result.toString());
 
 //        array.addFirst(12);
 //        System.out.println("The array after add: " + array.toString());
