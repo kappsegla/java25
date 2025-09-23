@@ -45,9 +45,15 @@ public class IntArray {
         size++;
     }
 
+    public void replace(int index, int value) {
+
+    }
+
     public void remove(int index) {
-
-
+        for (int i = index; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
+        }
+        size--;
     }
 
     @Override
@@ -71,12 +77,19 @@ public class IntArray {
         array.add(3);
         array.add(4);
         array.add(5);
-        array.addFirst(12);
-        System.out.println("The array after add: " + array.toString());
-        array.insert(2, 20);
-        System.out.println("The array after insert: " + array.toString());
-        array.remove(1);
-        System.out.println("The array after remove: " + array.toString());
+        array.add(1);
+        array.add(2);
+        array.add(3);
+        array.add(4);
+        array.add(5);
+        array.remove(9);
+
+//        array.addFirst(12);
+//        System.out.println("The array after add: " + array.toString());
+//        array.insert(2, 20);
+//        System.out.println("The array after insert: " + array.toString());
+//        array.remove(1);
+//        System.out.println("The array after remove: " + array.toString());
 
     }
 
