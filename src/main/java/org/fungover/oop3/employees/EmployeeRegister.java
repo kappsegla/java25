@@ -14,6 +14,7 @@ public class EmployeeRegister {
         employees.add(new Manager("Frida", 35000));
         employees.add(new Developer("Anna", 450.0, 50));
 
+
         for (Employee e : employees) {
             System.out.println(e.work());
             System.out.println("Salary: " + e.calculateSalary());

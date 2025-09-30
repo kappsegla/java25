@@ -57,6 +57,6 @@ public class Car {
         Car car2 = new Car();
         car.setPrice(700000);
         car.halfPrice();
-        IO.println("New price:" + car.getPrice());
+        //IO.println("New price:" + car.getPrice());
     }
 }

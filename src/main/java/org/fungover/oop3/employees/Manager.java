@@ -6,9 +6,10 @@ public final class Manager extends Employee {
     private double baseSalary;
 
     public Manager(String name, double baseSalary) {
-        if (baseSalary < 0)
-            throw new IllegalArgumentException();
         super(name);
+        if (baseSalary < 0) {
+            throw new IllegalArgumentException();
+        }
         this.baseSalary = baseSalary;
     }
 

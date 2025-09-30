@@ -3,8 +3,8 @@ package org.fungover.oop3.employees;
 import java.util.Objects;
 
 public class Developer extends Employee {
-    private double hourlyRate;
-    private int hoursWorked;
+    private final double hourlyRate;
+    private final int hoursWorked;
 
     public Developer(String name, double hourlyRate, int hoursWorked) {
         super(name);
@@ -35,13 +35,13 @@ public class Developer extends Employee {
     public final boolean equals(Object o) {
         if (!(o instanceof Developer developer)) return false;
 
-        return this.name.equals(developer.name) &&
+        return Objects.equals(this.name, developer.name) &&
                 Double.compare(hourlyRate, developer.hourlyRate) == 0 &&
                 hoursWorked == developer.hoursWorked;
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(this.name, this.hourlyRate, this.hoursWorked);
     }
 }
