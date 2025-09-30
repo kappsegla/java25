@@ -7,7 +7,7 @@ public abstract class Employee {
         this.name = name;
     }
 
-    public String name() {
+    public final String name() {
         return name;
     }
 
