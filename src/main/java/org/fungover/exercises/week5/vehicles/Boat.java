@@ -1,4 +1,7 @@
 package org.fungover.exercises.week5.vehicles;
 
-public class Boat extends Vehicle {
+public abstract class Boat extends Vehicle {
+    public Boat(String m) {
+        super(m);
+    }
 }

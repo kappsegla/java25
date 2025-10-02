@@ -2,6 +2,9 @@ package org.fungover.exercises.week5.vehicles;
 
 public class MotorBoat extends Boat {
 
+    public MotorBoat(String m) {
+        super(m);
+    }
 
     @Override
     public void goTo(String destination) {
