@@ -2,7 +2,7 @@ package org.fungover.exercises.week5.vehicles;
 
 public class Bicycle extends Vehicle {
 
-    public Bicycle(String m) {
+    public Bicycle(Manufacturer m) {
         super(m);
     }
 

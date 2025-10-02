@@ -2,7 +2,7 @@ package org.fungover.exercises.week5.vehicles;
 
 public class MotorBoat extends Boat {
 
-    public MotorBoat(String m) {
+    public MotorBoat(Manufacturer m) {
         super(m);
     }
 
