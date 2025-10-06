@@ -4,7 +4,7 @@ public abstract class Vehicle {
     protected final String manufacturer;
 
     //DDD - Domain Driven Design
-
+    //Manufacturer is a value object, has no identity
     public Vehicle(Manufacturer m) {
         this.manufacturer = m.manufacturer();
     }
