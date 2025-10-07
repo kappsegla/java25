@@ -1,6 +1,8 @@
 package org.fungover.oop4;
 
-public class LinkedList {
+import java.time.LocalDate;
+
+public class LinkedList<T> {
 
     Node first = null;
     Node last = null;
@@ -10,7 +12,7 @@ public class LinkedList {
      *
      * @param value
      */
-    public void add(String value) {
+    public void add(T value) {
         //First value added
         if (first == null) {
             first = new Node();
@@ -31,7 +33,7 @@ public class LinkedList {
         }
     }
 
-    public String get(int index) {
+    public T get(int index) {
         int counter = 0;
         Node temp = first;
         if (temp == null)
@@ -45,18 +47,21 @@ public class LinkedList {
         return temp.value;
     }
 
+    class Node {
+        T value;
+        Node next;
+    }
+
     static void main() {
-        LinkedList list = new LinkedList();
+        LinkedList<String> list = new LinkedList<>();
         //list.get(0);  //Fail because empty list
         list.add("Number 1");
         list.add("Number 2");
         list.add("Number 3");
         System.out.println(list.get(1));
         //list.get(4);  //Fail bacause too far
-    }
-}
 
-class Node {
-    String value;
-    Node next;
+        LinkedList<LocalDate> dates = new LinkedList<>();
+        dates.add(LocalDate.now());
+    }
 }
