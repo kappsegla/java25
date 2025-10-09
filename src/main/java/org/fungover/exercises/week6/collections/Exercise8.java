@@ -11,6 +11,5 @@ public class Exercise8 {
         linesOfCode.put("Exercise3", 24);
 
         System.out.println(linesOfCode.getOrDefault("Exercise4", 0));
-
     }
 }
