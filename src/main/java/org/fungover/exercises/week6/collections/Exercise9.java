@@ -21,12 +21,12 @@ public class Exercise9 {
             wordLength.putIfAbsent(length, new HashSet<>());
             wordLength.get(length).add(s);
 
-//            wordLength.merge(length,
-//                    new HashSet<>(Set.of(s)),
-//                    (existingSet, newSet) -> {
-//                        existingSet.addAll(newSet);
-//                        return existingSet;
-//                    });
+            wordLength.merge(length,
+                    new HashSet<>(Set.of(s)),
+                    (existingSet, newSet) -> {
+                        existingSet.addAll(newSet);
+                        return existingSet;
+                    });
         }
 
         System.out.println(wordLength.get(3));
