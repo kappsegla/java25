@@ -20,7 +20,7 @@ public class Exercise6 {
         text = text.replaceAll("[.,-]|[\\r\\n]+", "")
                 .toLowerCase();
         List<String> sentenceList = Arrays.asList(text.split("\\s+"));
-
+        //KAn användas i en varukorg tex
         for (String s : sentenceList) {
             //wordCount.merge(s, 1, Integer::sum);
             if (wordCount.containsKey(s)) {
