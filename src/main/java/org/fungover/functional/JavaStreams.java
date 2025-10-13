@@ -29,7 +29,6 @@ public class JavaStreams {
                 result.add(computer);
 
         //result.forEach(System.out::println);
-
         result = computers.stream()
                 .filter(computer -> computer.memorySize() > 32000)
                 .toList();
