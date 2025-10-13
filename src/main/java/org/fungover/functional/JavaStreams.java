@@ -15,6 +15,7 @@ public class JavaStreams {
                 new Computer("server03", 131072, 3.9f),
                 new Computer("desktop03", 65536, 4.6f),
                 new Computer("laptop03", 32768, 3.4f),
+                new Computer("server04", 262144, 4.0f),
                 new Computer("server04", 262144, 4.0f)
         );
     }
@@ -29,11 +30,31 @@ public class JavaStreams {
                 result.add(computer);
 
         //result.forEach(System.out::println);
-        result = computers.stream()
+        var result2 = computers.stream()
+                .filter(computer -> computer.hostName().startsWith("s"))
                 .filter(computer -> computer.memorySize() > 32000)
+                //.sorted(Comparator.comparing(o -> o.hostName()))
+                .distinct()
                 .toList();
 
-        result.forEach(System.out::println);
+        result2.forEach(System.out::println);
+
+//        var sum = computers.stream()
+//                .filter(c -> c.hostName().startsWith("server"))
+//                .distinct()
+//                .map(computer -> computer.memorySize())
+//                .reduce(0, (acc, cur) -> acc += cur);
+
+        var sum = computers.stream()
+                .filter(c -> c.hostName().startsWith("server"))
+                .distinct()
+                .mapToInt(computer -> computer.memorySize())
+                .sum();
+
+        System.out.println(sum);
+
+
+
     }
 
 
