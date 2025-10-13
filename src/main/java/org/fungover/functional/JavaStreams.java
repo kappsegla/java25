@@ -2,6 +2,7 @@ package org.fungover.functional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JavaStreams {
     public static List<Computer> createComputers() {
@@ -53,11 +54,16 @@ public class JavaStreams {
 
         System.out.println(sum);
 
+        //Find a laptop with more than 32 GB memory
+        Optional<Computer> computer = computers.stream()
+                .filter(c -> c.hostName().startsWith("laptop"))
+                .filter(c -> c.memorySize() > 32000)
+                .findFirst();
 
-
+        //Optional object, using ifPresent to only run code if not empty
+        //Using method reference to tell which method to run as implementation of the functional interface Consumer<T>
+        computer.ifPresent(System.out::println);
     }
-
-
 }
 
 record Computer(String hostName, int memorySize, float cpuSpeed) {
