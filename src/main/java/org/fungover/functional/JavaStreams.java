@@ -5,7 +5,7 @@ import java.util.List;
 
 public class JavaStreams {
     public static List<Computer> createComputers() {
-        return new ArrayList<>(List.of(
+        return List.of(
                 new Computer("server01", 32768, 3.6f),
                 new Computer("desktop01", 16384, 4.2f),
                 new Computer("laptop01", 8192, 2.8f),
@@ -16,7 +16,7 @@ public class JavaStreams {
                 new Computer("desktop03", 65536, 4.6f),
                 new Computer("laptop03", 32768, 3.4f),
                 new Computer("server04", 262144, 4.0f)
-        ));
+        );
     }
 
     static void main() {
@@ -28,7 +28,7 @@ public class JavaStreams {
             if (computer.memorySize() > 32000)
                 result.add(computer);
 
-        result.forEach(System.out::println);
+        //result.forEach(System.out::println);
 
         result = computers.stream()
                 .filter(computer -> computer.memorySize() > 32000)
