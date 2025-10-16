@@ -13,8 +13,13 @@ public class Streams {
         result.ifPresent(System.out::println);
 
         //Last country name in list
-
-
+        //System.out.println(getCountries().getLast().countryName);
+        var list = getCountries();
+        //list.stream().skip(list.size()-1).map(Country::countryName).findFirst();
+        list.stream()
+                .map(Country::countryName)
+                .reduce((a, b) -> b)
+                .ifPresent(System.out::println);
     }
 
 
