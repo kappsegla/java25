@@ -15,7 +15,22 @@ public class Streams {
         exercise4();
         System.out.println("===Exercise 5===");
         exercise5();
+        System.out.println("===Exercise 6===");
+        exercise6();
 
+    }
+
+    private static void exercise6() {
+        double meanArea = getCountries().stream()
+                .mapToInt(Country::area)
+                .average()
+                .orElse(0.0);
+        System.out.println(meanArea);
+
+        var count = getCountries().stream()
+                .filter(country -> country.area() < meanArea)
+                .count();
+        System.out.println(count);
     }
 
     private static void exercise5() {
