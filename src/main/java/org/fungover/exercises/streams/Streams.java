@@ -14,8 +14,26 @@ public class Streams {
         System.out.println("===Exercise 4===");
         exercise4();
         System.out.println("===Exercise 5===");
+        exercise5();
 
+    }
 
+    private static void exercise5() {
+        getCountries().stream()
+                .map(Country::population)
+                .max(Comparator.naturalOrder())
+                .ifPresent(System.out::println);
+
+        getCountries().stream()
+                .mapToDouble(Country::population)
+                .max()
+                .ifPresent(System.out::println);
+
+        getCountries().stream()
+                .max(Comparator.comparing(Country::population))
+                .map(country -> String.format("The largest population is %,.0f",
+                        country.population * 1000000))
+                .ifPresent(System.out::println);
     }
 
     private static void exercise4() {
