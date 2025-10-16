@@ -30,7 +30,18 @@ public class Streams {
         exercise11();
         System.out.println("===Exercise 12===");
         exercise12();
+        System.out.println("===Exercise 13===");
+        exercise13();
 
+    }
+
+    private static void exercise13() {
+        getCountries().stream()
+                .filter(country -> country.area() >= 500_000)
+                .sorted(Comparator.comparing(Country::area).reversed())
+                .limit(3)
+                .map(country -> country.countryName() + "," + country.area())
+                .forEach(System.out::println);
     }
 
     private static void exercise12() {
