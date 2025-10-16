@@ -36,6 +36,23 @@ public class Streams {
                 .filter(country -> country.area > 1_000_000)
                 .count();
         System.out.println(greaterThan10000 + " " + greaterThan100000 + " " + greaterThan1000000);
+
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        for (var country : getCountries()) {
+            if (country.area > 1_000_000) {
+                a++;
+                b++;
+                c++;
+            } else if (country.area > 100_000) {
+                a++;
+                b++;
+            } else if (country.area > 10_000)
+                a++;
+        }
+        System.out.println(a + " " + b + " " + c);
+
     }
 
     private static void exercise7() {
