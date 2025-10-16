@@ -3,6 +3,7 @@ package org.fungover.exercises.streams;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class Streams {
@@ -32,9 +33,32 @@ public class Streams {
         exercise12();
         System.out.println("===Exercise 13===");
         exercise13();
-        System.out.println("===Exercise 13===");
+        System.out.println("===Exercise 14===");
         exercise14();
+        System.out.println("===Exercise 15===");
+        exercise15();
 
+
+    }
+
+    private static void exercise15() {
+        var map = getCountries().stream()
+                .collect(Collectors.groupingBy(
+                        country -> Math.floor(country.population),
+                        TreeMap::new,
+                        Collectors.toList()
+                ));
+        presentCountryGrouping(map);
+    }
+
+    private static void presentCountryGrouping(TreeMap<Double, List<Country>> map) {
+        map.forEach((population, countries) -> System.out.printf("""
+                Länder med %.0f miljoner invånare
+                %s
+                """, population, countries.stream()
+                .map(Country::countryName)
+                .sorted()
+                .collect(Collectors.joining("\n- ", "- ", ""))));
     }
 
     private static void exercise14() {
