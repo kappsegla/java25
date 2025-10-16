@@ -1,11 +1,30 @@
 package org.fungover.exercises.streams;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
 public class Streams {
 
     static void main() {
+        System.out.println("===Exercise 2===");
+        exercise2();
+        System.out.println("===Exercise 3===");
+        exercise3();
+        System.out.println("===Exercise 4===");
+
+
+    }
+
+    private static void exercise3() {
+        //Print all country names sorted
+        getCountries().stream()
+                .map(Country::countryName)
+                .sorted(Comparator.naturalOrder())
+                .forEach(System.out::println);
+    }
+
+    private static void exercise2() {
         //First country name in list
         Optional<String> result = getCountries().stream()
                 .map(Country::countryName)
