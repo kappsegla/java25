@@ -12,8 +12,17 @@ public class Streams {
         System.out.println("===Exercise 3===");
         exercise3();
         System.out.println("===Exercise 4===");
+        exercise4();
+        System.out.println("===Exercise 5===");
 
 
+    }
+
+    private static void exercise4() {
+        getCountries().stream()
+                .sorted(Comparator.comparingDouble(Country::population).reversed())
+                .map(Country::countryName)
+                .forEach(System.out::println);
     }
 
     private static void exercise3() {
