@@ -3,6 +3,7 @@ package org.fungover.exercises.streams;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Streams {
 
@@ -17,7 +18,17 @@ public class Streams {
         exercise5();
         System.out.println("===Exercise 6===");
         exercise6();
+        System.out.println("===Exercise 7===");
+        exercise7();
 
+
+    }
+
+    private static void exercise7() {
+        IO.println(getCountries().stream()
+                .filter(country -> country.population < 5)
+                .map(Country::countryName)
+                .collect(Collectors.joining(" ")));
     }
 
     private static void exercise6() {
