@@ -22,7 +22,22 @@ public class Streams {
         exercise7();
         System.out.println("===Exercise 8===");
         exercise8();
+        System.out.println("===Exercise 9===");
+        exercise9();
 
+
+    }
+
+    private static void exercise9() {
+        getCountries().stream()
+                .filter(country -> country.countryName()
+                        .charAt(0) == country.capital().charAt(0))
+                .map(country -> country.countryName() + ", " + country.capital())
+                .forEach(System.out::println);
+        getCountries().stream()
+                .filter(country -> country.countryName().startsWith(country.capital().substring(0, 1)))
+                .map(country -> country.countryName() + ", " + country.capital())
+                .forEach(System.out::println);
     }
 
     private static void exercise8() {
