@@ -45,7 +45,16 @@ public class Streams {
         exercise17();
         System.out.println("===Exercise 18===");
         exercice18();
+        System.out.println("===Exercise 19===");
+        exercise19();
+    }
 
+    private static void exercise19() {
+        System.out.println("Total population for countries with 7 letters " + getCountries().stream()
+                .filter(c -> c.countryName.length() == 7)
+                //.peek(System.out::println)
+                .mapToDouble(Country::population)
+                .sum());
     }
 
     private static void exercice18() {
