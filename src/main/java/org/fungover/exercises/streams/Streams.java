@@ -26,8 +26,18 @@ public class Streams {
         exercise9();
         System.out.println("===Exercise 10===");
         exercise10();
+        System.out.println("===Exercise 11===");
+        exercise11();
 
 
+    }
+
+    private static void exercise11() {
+        getCountries().stream()
+                .sorted(Comparator.comparingDouble(Country::population))
+                .limit(5)
+                .map(Country::countryName)
+                .forEach(System.out::println);
     }
 
     private static void exercise10() {
