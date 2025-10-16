@@ -24,8 +24,14 @@ public class Streams {
         exercise8();
         System.out.println("===Exercise 9===");
         exercise9();
+        System.out.println("===Exercise 10===");
+        exercise10();
 
 
+    }
+
+    private static void exercise10() {
+        getCountries().stream().filter(country -> country.countryName().length() > country.capital().length()).map(Country::countryName).forEach(System.out::println);
     }
 
     private static void exercise9() {
