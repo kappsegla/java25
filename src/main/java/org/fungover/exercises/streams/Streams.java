@@ -37,8 +37,23 @@ public class Streams {
         exercise14();
         System.out.println("===Exercise 15===");
         exercise15();
+        System.out.println("===Exercise 16a===");
+        exercise16a();
+        System.out.println("===Exercise 16b===");
 
 
+
+    }
+
+    private static void exercise16a() {
+        record NameAndPopulation(String name, int population) {
+            static NameAndPopulation of(Country country) {
+                return new NameAndPopulation(country.countryName, (int) (country.population * 1_000_000));
+            }
+        }
+        getCountries().stream()
+                .map(NameAndPopulation::of)
+                .forEach(System.out::println);
     }
 
     private static void exercise15() {
