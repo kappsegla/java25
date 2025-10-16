@@ -43,8 +43,22 @@ public class Streams {
         exercise16b();
         System.out.println("===Exercise 17===");
         exercise17();
+        System.out.println("===Exercise 18===");
+        exercice18();
 
+    }
 
+    private static void exercice18() {
+        System.out.println(getCountries().stream()
+                .sorted(Comparator.comparingDouble(Country::population))
+                .limit(6)
+                .mapToDouble(Country::population)
+                .sum());
+        System.out.println(getCountries().stream()
+                .sorted(Comparator.comparingDouble(Country::population).reversed())
+                .limit(3)
+                .mapToDouble(Country::population)
+                .sum());
     }
 
     private static void exercise17() {
