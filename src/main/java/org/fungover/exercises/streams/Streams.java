@@ -32,7 +32,18 @@ public class Streams {
         exercise12();
         System.out.println("===Exercise 13===");
         exercise13();
+        System.out.println("===Exercise 13===");
+        exercise14();
 
+    }
+
+    private static void exercise14() {
+        var result = getCountries().stream()
+                .collect(Collectors.groupingBy(
+                        country -> country.countryName.substring(0, 1),
+                        Collectors.counting()
+                ));
+        System.out.println(result.entrySet());
     }
 
     private static void exercise13() {
