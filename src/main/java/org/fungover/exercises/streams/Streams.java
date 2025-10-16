@@ -40,9 +40,21 @@ public class Streams {
         System.out.println("===Exercise 16a===");
         exercise16a();
         System.out.println("===Exercise 16b===");
+        exercise16b();
 
 
+    }
 
+    private static void exercise16b() {
+        record NameAndDensity(String name, double density) {
+            static NameAndDensity of(Country country) {
+                return new NameAndDensity(country.countryName(), country.population() * 1_000_000 / country.area());
+            }
+        }
+        getCountries().stream()
+                .map(NameAndDensity::of)
+                .sorted(Comparator.comparingDouble(NameAndDensity::density))
+                .forEach(nd -> System.out.printf("%s with density %.2f%n", nd.name, nd.density));
     }
 
     private static void exercise16a() {
