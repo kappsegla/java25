@@ -20,8 +20,22 @@ public class Streams {
         exercise6();
         System.out.println("===Exercise 7===");
         exercise7();
+        System.out.println("===Exercise 8===");
+        exercise8();
 
+    }
 
+    private static void exercise8() {
+        var greaterThan10000 = getCountries().stream()
+                .filter(country -> country.area > 10000)
+                .count();
+        var greaterThan100000 = getCountries().stream()
+                .filter(country -> country.area > 100_000)
+                .count();
+        var greaterThan1000000 = getCountries().stream()
+                .filter(country -> country.area > 1_000_000)
+                .count();
+        System.out.println(greaterThan10000 + " " + greaterThan100000 + " " + greaterThan1000000);
     }
 
     private static void exercise7() {
