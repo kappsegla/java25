@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class FileInput {
     static void main() {
@@ -17,9 +17,19 @@ public class FileInput {
 //            System.out.println(input);
             Files.lines(path)
                     .map(FileInput::getCake)
-                    .filter(Optional::isPresent)
-                    .map(Optional::get)
+                    .filter(Either::isRight)
+                    .map(Either::getRight)
                     .forEach(System.out::println);
+
+            var result = Files.lines(path)
+                    .map(FileInput::getCake)
+                    .collect(Collectors.partitioningBy(Either::isRight));
+
+            System.out.println("Cakes");
+            result.get(true).forEach(e -> System.out.println(e.getRight()));
+            System.out.println("Errors");
+            result.get(false).forEach(e -> System.out.println(e.getLeft().getMessage()));
+
         } catch (NoSuchFileException e) {
             System.out.println("File not found: " + path);
         } catch (IOException e) {
@@ -31,9 +41,9 @@ public class FileInput {
     private static Either<CakeException, Cake> getCake(String s) {
         String[] parts = s.split(",");
         try {
-            return new Cake(Integer.parseInt(parts[0].trim()), parts[1].trim(), Integer.parseInt(parts[2].trim())));
+            return new Either<>(new Cake(Integer.parseInt(parts[0].trim()), parts[1].trim(), Integer.parseInt(parts[2].trim())));
         } catch (NumberFormatException e) {
-            return;
+            return new Either<>(new CakeException("Number parsing exception: " + e.getMessage()));
         }
     }
 
@@ -84,4 +94,9 @@ record Cake(int id, String name, int price) {
 }
 
 class CakeException extends RuntimeException {
+
+    public CakeException(String message) {
+        super(message);
+    }
+
 }
