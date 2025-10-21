@@ -1,5 +1,7 @@
 package org.fungover.exercises.files;
 
+import org.fungover.functional.Either;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -18,7 +20,11 @@ public class FileInput {
             Files.lines(path)
                     .map(FileInput::getCake)
                     .filter(Either::isRight)
-                    .map(Either::getRight)
+                    .map(e -> switch (e) {
+                        case Either.Right<CakeException, Cake> r -> r.right();
+                        case Either.Left<CakeException, Cake> l ->
+                                throw new IllegalStateException("Unexpected Left after filter");
+                    })
                     .forEach(System.out::println);
 
             var result = Files.lines(path)
@@ -26,9 +32,20 @@ public class FileInput {
                     .collect(Collectors.partitioningBy(Either::isRight));
 
             System.out.println("Cakes");
-            result.get(true).forEach(e -> System.out.println(e.getRight()));
+            result.get(true).forEach(e -> {
+                switch (e) {
+                    case Either.Right<CakeException, Cake>(Cake cake) when cake.id() == 2 -> System.out.println(cake);
+                    case Either.Right<CakeException, Cake>(Cake _) -> System.out.println("Not number 1 cake");
+                    case Either.Left<CakeException, Cake> l -> { /* no-op */ }
+                }
+            });
             System.out.println("Errors");
-            result.get(false).forEach(e -> System.out.println(e.getLeft().getMessage()));
+            result.get(false).forEach(e -> {
+                switch (e) {
+                    case Either.Left<CakeException, Cake> l -> System.out.println(l.left());
+                    case Either.Right<CakeException, Cake> r -> { /* no-op */ }
+                }
+            });
 
         } catch (NoSuchFileException e) {
             System.out.println("File not found: " + path);
@@ -38,12 +55,12 @@ public class FileInput {
 
     }
 
-    private static Either<CakeException, Cake> getCake(String s) {
+    private static org.fungover.functional.Either<CakeException, Cake> getCake(String s) {
         String[] parts = s.split(",");
         try {
-            return new Either<>(new Cake(Integer.parseInt(parts[0].trim()), parts[1].trim(), Integer.parseInt(parts[2].trim())));
+            return new Either.Right<>(new Cake(Integer.parseInt(parts[0].trim()), parts[1].trim(), Integer.parseInt(parts[2].trim())));
         } catch (NumberFormatException e) {
-            return new Either<>(new CakeException("Number parsing exception: " + e.getMessage()));
+            return new Either.Left<>(new CakeException("Number parsing exception: " + e.getMessage()));
         }
     }
 
@@ -57,37 +74,37 @@ public class FileInput {
 //    }
 }
 
-class Either<T extends Exception, U> {
-    private final T left;
-    private final U right;
-
-    public Either(T left) {
-        this.left = left;
-        this.right = null;
-    }
-
-    public Either(U right) {
-        this.right = right;
-        this.left = null;
-    }
-
-    public T getLeft() {
-        //Throw exception if not left?
-        return left;
-    }
-
-    public U getRight() {
-        return right;
-    }
-
-    public boolean isLeft() {
-        return left != null;
-    }
-
-    public boolean isRight() {
-        return right != null;
-    }
-}
+//class Either<T extends Exception, U> {
+//    private final T left;
+//    private final U right;
+//
+//    public Either(T left) {
+//        this.left = left;
+//        this.right = null;
+//    }
+//
+//    public Either(U right) {
+//        this.right = right;
+//        this.left = null;
+//    }
+//
+//    public T getLeft() {
+//        //Throw exception if not left?
+//        return left;
+//    }
+//
+//    public U getRight() {
+//        return right;
+//    }
+//
+//    public boolean isLeft() {
+//        return left != null;
+//    }
+//
+//    public boolean isRight() {
+//        return right != null;
+//    }
+//}
 
 record Cake(int id, String name, int price) {
 

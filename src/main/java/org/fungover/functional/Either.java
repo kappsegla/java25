@@ -10,4 +10,12 @@ public sealed interface Either<L, R> permits Left, Right {
 
     public record Right<L, R>(R right) implements Either<L, R> {
     }
+
+    default boolean isRight() {
+        return this instanceof Either.Right<L, R>;
+    }
+
+    default boolean isLeft() {
+        return this instanceof Either.Left<L, R>;
+    }
 }
