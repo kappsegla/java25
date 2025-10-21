@@ -34,7 +34,21 @@ public class SizeCalculator {
     }
 
     private static long calculateSize(Path path) {
-        return 0;
+        try (Stream<Path> pathStream = Files.walk(path)) {
+            return pathStream
+                    .filter(Files::isRegularFile)
+                    .mapToLong(path1 -> {
+                        try {
+                            return Files.size(path1);
+                        } catch (IOException e) {
+                            return 0L;
+                        }
+                    })
+                    .sum();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 
