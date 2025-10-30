@@ -64,6 +64,13 @@ public class Regexp {
     }
 
     private static void exercise6() {
+        String s = "[ae][nds]";
+        Pattern p = Pattern.compile(s);
+        Matcher m = p.matcher("hands jumbled terrific old-fashioned grass highfalutin stupendous daughter feigned skirt modern truthful");
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(MatchResult::group)  //The matched sequence
+                .forEach(System.out::println);
     }
 
 
