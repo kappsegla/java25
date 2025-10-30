@@ -93,6 +93,12 @@ public class Regexp {
 
     private static void exercise8() {
 
+        var p = Pattern.compile("(?<!-)\\b\\w[aeiouyåäö]\\w*\\b");
+        var m = p.matcher("hands jumbled terrific old-fashioned grass highfalutin stupendous daughter feigned skirt modern truthful");
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(MatchResult::group)  //The matched sequence
+                .forEach(System.out::println);
     }
 
 
