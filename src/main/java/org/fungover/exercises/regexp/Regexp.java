@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regexp {
     static void main() {
-        exercise9();
+        exercise10b();
     }
 
 
@@ -107,6 +107,24 @@ public class Regexp {
         m.results()
                 .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
                 .map(MatchResult::group)  //The matched sequence
+                .forEach(System.out::println);
+    }
+
+    private static void exercise10() {
+        var p = Pattern.compile("(\\w{3})(?=.*\\1)");
+        var m = p.matcher("hands jumbled terrific old-fashioned grass highfalutin stupendous daughter feigned skirt modern truthful");
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(mr -> mr.group(0))  //The matched sequence
+                .forEach(System.out::println);
+    }
+
+    private static void exercise10b() {
+        var p = Pattern.compile("<(\\w+)>(.*?)</\\1>");
+        var m = p.matcher("<div>Första</div><div>Andra</div>");
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(mr -> mr.group(2))  //The matched sequence
                 .forEach(System.out::println);
     }
 
