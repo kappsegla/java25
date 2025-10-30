@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regexp {
     static void main() {
-        exercise13();
+        exercise14();
     }
 
 
@@ -158,6 +158,13 @@ public class Regexp {
                 .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
                 .map(MatchResult::group)  //The matched sequence
                 .forEach(System.out::println);
+    }
+
+    private static void exercise14() {
+        var p = Pattern.compile("(?<=[.] )[a-zåäö]");
+        var m = p.matcher("hands jumbled terrific. old-fashioned grass. highfalutin stupendous daughter. feigned skirt modern truthful");
+        var s = m.replaceAll(mr -> mr.group().toUpperCase());
+        System.out.println(s);
     }
 
 
