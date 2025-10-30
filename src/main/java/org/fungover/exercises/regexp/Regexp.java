@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regexp {
     static void main() {
-        exercise10b();
+        exercise11();
     }
 
 
@@ -119,13 +119,19 @@ public class Regexp {
                 .forEach(System.out::println);
     }
 
-    private static void exercise10b() {
-        var p = Pattern.compile("<(\\w+)>(.*?)</\\1>");
-        var m = p.matcher("<div>Första</div><div>Andra</div>");
-        m.results()
-                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
-                .map(mr -> mr.group(2))  //The matched sequence
-                .forEach(System.out::println);
+    private static void exercise11() {
+        var p = Pattern.compile("[lo]");
+        var m = p.matcher("hands jumbled terrific old-fashioned grass highfalutin stupendous daughter feigned skirt modern truthful");
+        var s = m.replaceAll(Regexp::loTo10);
+        System.out.println(s);
+    }
+
+    private static String loTo10(MatchResult matchResult) {
+        return switch (matchResult.group()) {
+            case "l" -> "1";
+            case "o" -> "0";
+            default -> throw new IllegalStateException("Unexpected value: " + matchResult.group());
+        };
     }
 
 
