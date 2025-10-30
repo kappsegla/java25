@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regexp {
     static void main() {
-        exercise3();
+        exercise5();
     }
 
     static void exercise1() {
@@ -41,4 +41,20 @@ public class Regexp {
                 .map(MatchResult::group)  //The matched sequence
                 .forEach(System.out::println);
     }
+
+    private static void exercise4() {
+        String s = "(?<!t)t(?!t)";
+        Pattern p = Pattern.compile(s);
+        Matcher m = p.matcher("min katt har tre konkatenerade kanter");
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(MatchResult::group)  //The matched sequence
+                .forEach(System.out::println);
+    }
+
+    private static void exercise5() {
+
+    }
+
+
 }
