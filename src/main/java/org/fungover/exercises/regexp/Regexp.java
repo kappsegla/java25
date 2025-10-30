@@ -6,8 +6,9 @@ import java.util.regex.Pattern;
 
 public class Regexp {
     static void main() {
-        exercise5();
+        exercise6();
     }
+
 
     static void exercise1() {
         String s = "kat";
@@ -53,7 +54,16 @@ public class Regexp {
     }
 
     private static void exercise5() {
+        String s = "as|od";
+        Pattern p = Pattern.compile(s);
+        Matcher m = p.matcher("hands jumbled terrific old-fashioned grass highfalutin stupendous daughter feigned skirt modern truthful");
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(MatchResult::group)  //The matched sequence
+                .forEach(System.out::println);
+    }
 
+    private static void exercise6() {
     }
 
 
