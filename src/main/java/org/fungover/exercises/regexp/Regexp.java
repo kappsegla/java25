@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Regexp {
     static void main() {
-        exercise11();
+        exercise12();
     }
 
 
@@ -132,6 +132,22 @@ public class Regexp {
             case "o" -> "0";
             default -> throw new IllegalStateException("Unexpected value: " + matchResult.group());
         };
+    }
+
+    private static void exercise12() {
+        var p = Pattern.compile("\\b[a-zåäö]{6}\\b",
+                Pattern.CASE_INSENSITIVE);
+        // var p = Pattern.compile("\\b\\w{6}\\b");  //Includes 0-9 and _
+        var m = p.matcher("""
+                hands jumbled terrific old-fashioned
+                grass highfalutin stupendous daughter
+                feigned skirt Modern truthful
+                """);
+        m.results()
+                .peek(mr -> System.out.println(">" + mr.start() + ":" + mr.end()))  //Prints start and end pos of match
+                .map(MatchResult::group)  //The matched sequence
+                .forEach(System.out::println);
+        //.count();
     }
 
 
