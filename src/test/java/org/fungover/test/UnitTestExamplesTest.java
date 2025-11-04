@@ -3,6 +3,7 @@ package org.fungover.test;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UnitTestExamplesTest {
 
@@ -35,6 +36,14 @@ class UnitTestExamplesTest {
         ob.setValue("Another");
 
         assertThat(ob.getValue()).isEqualTo("Another");
+    }
+
+    @Test
+    void setNullAsValueThrowsAnException() {
+        var ob = new UnitTestExamples();
+
+        assertThatThrownBy(() -> ob.setValue(null))
+                .isInstanceOf(NullPointerException.class);
     }
 
 }

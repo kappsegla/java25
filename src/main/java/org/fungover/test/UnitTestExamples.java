@@ -1,5 +1,7 @@
 package org.fungover.test;
 
+import java.util.Objects;
+
 public class UnitTestExamples {
 
 
@@ -10,7 +12,7 @@ public class UnitTestExamples {
     }
 
     public void setValue(String input) {
-        value = input;
+        value = Objects.requireNonNull(input);
     }
 
     public String getValue() {
