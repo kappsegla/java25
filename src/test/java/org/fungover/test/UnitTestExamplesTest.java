@@ -20,12 +20,21 @@ class UnitTestExamplesTest {
 
     @Test
     void setAValueShouldSaveValue() {
+        //Arrange
+        var ob = new UnitTestExamples();
+        //Act
+        ob.setValue("Hello");
+        //Assert
+        assertThat(ob.getValue()).isEqualTo("Hello");
+    }
+
+    @Test
+    void setAnotherValueShouldSaveThat() {
         var ob = new UnitTestExamples();
 
-        ob.setValue("Hello");
+        ob.setValue("Another");
 
-        assertThat(ob.getValue()).isEqualTo("Hello");
-
+        assertThat(ob.getValue()).isEqualTo("Another");
     }
 
 }
