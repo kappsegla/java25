@@ -1,5 +1,6 @@
 package org.fungover.test;
 
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class UnitTestExamples {
@@ -11,8 +12,11 @@ public class UnitTestExamples {
         return a + b;
     }
 
-    public static String greeting() {
-        return "Good Morning";
+    public static String greeting(LocalTime currentTime) {
+        if (currentTime.isBefore(LocalTime.of(12, 0)))
+            return "Good Morning";
+        else
+            return "Good Afternoon";
     }
 
     public void setValue(String input) {

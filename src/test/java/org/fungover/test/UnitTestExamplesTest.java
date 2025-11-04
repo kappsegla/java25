@@ -2,6 +2,8 @@ package org.fungover.test;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -48,9 +50,16 @@ class UnitTestExamplesTest {
 
     @Test
     void shouldReturnGoodMorningBeforeNoon() {
-        var result = UnitTestExamples.greeting();
+        var result = UnitTestExamples.greeting(LocalTime.of(11, 0));
 
         assertThat(result).isEqualTo("Good Morning");
+    }
+
+    @Test
+    void shouldReturnGoodAfternoonAfterNoon() {
+        var result = UnitTestExamples.greeting(LocalTime.of(12, 0));
+
+        assertThat(result).isEqualTo("Good Afternoon");
     }
 
 
