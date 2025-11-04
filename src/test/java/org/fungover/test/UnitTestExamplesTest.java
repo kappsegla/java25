@@ -46,4 +46,13 @@ class UnitTestExamplesTest {
                 .isInstanceOf(NullPointerException.class);
     }
 
+    @Test
+    void shouldReturnGoodMorningBeforeNoon() {
+        var result = UnitTestExamples.greeting();
+
+        assertThat(result).isEqualTo("Good Morning");
+    }
+
+
+
 }

@@ -11,6 +11,10 @@ public class UnitTestExamples {
         return a + b;
     }
 
+    public static String greeting() {
+        return "Good Morning";
+    }
+
     public void setValue(String input) {
         value = Objects.requireNonNull(input);
     }
@@ -18,4 +22,6 @@ public class UnitTestExamples {
     public String getValue() {
         return value;
     }
+
+
 }
