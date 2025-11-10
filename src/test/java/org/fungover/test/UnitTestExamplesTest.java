@@ -61,7 +61,4 @@ class UnitTestExamplesTest {
 
         assertThat(result).isEqualTo("Good Afternoon");
     }
-
-
-
 }
