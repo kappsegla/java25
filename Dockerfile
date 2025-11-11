@@ -1,4 +1,4 @@
 FROM eclipse-temurin:25-jdk
 COPY text.txt /text.txt
-COPY src/main/java/org/fungover/Demo.java /Demo.java
-ENTRYPOINT ["java", "/Demo.java"]
+COPY target/classes/org/fungover/Main.class /app/org/fungover/Main.class
+ENTRYPOINT ["java", "--class-path", "/app", "org.fungover.Main"]
